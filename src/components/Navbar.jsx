@@ -1,15 +1,8 @@
-import {Bars3Icon, HeartIcon, XMarkIcon} from "@heroicons/react/24/outline"
+import {HeartIcon} from "@heroicons/react/24/outline"
 import { useState } from "react"
 function Navbar() {
-    // const [showNav, setShowNav] = useState(true)
-    // const handleNavOpen = ()=>{
-    //     setShowNav(true)
-    // }
-    // const handNavClose = ()=>{
-    //     setShowNav(false)
-    // }
   return (
-    <nav className=''>      
+    <nav className='mb-5'>      
         <div className="bg-slate-700 flex justify-between p-3 rounded-lg relative">
             <div className="hidden md:block text-slate-300 font-bold">LOGO 😍</div>
             <Search/>
