@@ -1,7 +1,7 @@
 import {EyeIcon} from "@heroicons/react/24/outline"
 function CharacterList() {
   return (
-    <div className="w-full lg:w-[40%] h-40">
+    <div className="w-full lg:w-[40%]">
         <Character/>
         <Character/>
     </div>
@@ -12,7 +12,7 @@ export default CharacterList
 
 function Character(){
     return(
-        <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-2">
+        <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-4">
             <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt=""
             className="w-20 h-20 rounded-xl" />
             <div>
