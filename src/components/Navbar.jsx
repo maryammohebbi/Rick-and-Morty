@@ -1,12 +1,12 @@
 import {HeartIcon} from "@heroicons/react/24/outline"
 import { useState } from "react"
-function Navbar() {
+function Navbar({children}) {
   return (
     <nav className='mb-5'>      
         <div className="bg-slate-700 flex justify-between p-3 rounded-lg relative">
             <div className="hidden md:block text-slate-300 font-bold">LOGO 😍</div>
             <Search/>
-            <SearchResult/>
+            {children}
             <Favorites/>
         </div> 
     </nav>
@@ -22,9 +22,9 @@ function Search(){
     )
 }
 
-function SearchResult(){
+export function SearchResult({numOfSearchResult}){
     return(
-        <div className="hidden md:block text-slate-400 text-sm">Found X Characters</div>
+        <div className="hidden md:block text-slate-400 text-sm">Found {numOfSearchResult} Characters</div>
     )
 }
 
