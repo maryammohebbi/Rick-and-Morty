@@ -1,6 +1,16 @@
 import {EyeIcon} from "@heroicons/react/24/outline"
 import { useState } from "react"
-function CharacterList({characters}) {
+import Loader from "./Loader"
+
+function CharacterList({characters, isLoading}) {
+
+    if(isLoading){
+        return(
+            <div className="w-full lg:w-[40%]">
+                <Loader/>
+            </div>
+            )
+        }
   return (
     <div className="w-full lg:w-[40%]">
         {

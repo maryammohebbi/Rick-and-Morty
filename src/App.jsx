@@ -25,10 +25,10 @@ function App() {
       <Navbar>
         <SearchResult numOfSearchResult={characters.length}/>
       </Navbar>     
-        <Main>
-          {isLoading ? <Loader/> : <CharacterList characters={characters}/>}
-          <CharacterDetail/>
-        </Main>      
+      <Main>
+        <CharacterList characters={characters} isLoading={isLoading}/>
+        <CharacterDetail/>
+      </Main>      
     </div>
   )
 }
