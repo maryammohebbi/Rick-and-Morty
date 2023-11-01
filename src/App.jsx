@@ -9,6 +9,7 @@ function App() {
   const [characters, setCharacters] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [query, setQuery] = useState("")
+  const [selectedId, setSelectedId] = useState(null)
 
 
   useEffect(()=>{
@@ -34,6 +35,10 @@ function App() {
     fetchData()
   }, [query]);
 
+const handleSelectedCharacter = (id)=> {
+  setSelectedId(prevId => prevId === id ? null : id)
+}
+// console.log(selectedId)
 
 
   return (
@@ -44,8 +49,8 @@ function App() {
         <SearchResult numOfSearchResult={characters.length}/>
       </Navbar>     
       <Main>
-        <CharacterList characters={characters} isLoading={isLoading}/>
-        <CharacterDetail/>
+        <CharacterList characters={characters} isLoading={isLoading} onSelectCharacter={handleSelectedCharacter} selectedId={selectedId}/>
+        <CharacterDetail selectedId={selectedId}/>
       </Main>      
     </div>
   )

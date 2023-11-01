@@ -1,8 +1,8 @@
-import {EyeIcon} from "@heroicons/react/24/outline"
+import {EyeIcon, EyeSlashIcon} from "@heroicons/react/24/outline"
 import { useState } from "react"
 import Loader from "./Loader"
 
-function CharacterList({characters, isLoading}) {
+function CharacterList({characters, isLoading, onSelectCharacter, selectedId}) {
 
     if(isLoading){
         return (
@@ -15,7 +15,7 @@ function CharacterList({characters, isLoading}) {
     <div className="w-full lg:w-[40%]">
         {
             characters.map(item => (
-                <Character key={item.id} item={item}/>
+                <Character key={item.id} item={item} onSelectCharacter={onSelectCharacter} selectedId={selectedId}/>
             ))
         }
     </div>
@@ -24,12 +24,8 @@ function CharacterList({characters, isLoading}) {
 
 export default CharacterList
 
-function Character({item}){
-    const [open, setOpen] = useState(false)
-
-    const handleCharacter = ()=>{
-        setOpen(!open)
-    }
+function Character({item, onSelectCharacter, selectedId}){
+    
     return(
         <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-4">
             <img src={item.image} alt={item.name}
@@ -45,7 +41,11 @@ function Character({item}){
                     <span> - {item.species}</span>
                 </div>
             </div>
-            <button className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" onClick={handleCharacter}><EyeIcon /></button>
+            <button className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" onClick={()=> onSelectCharacter(item.id)}>
+                {
+                    selectedId === item.id ? <EyeSlashIcon/> : <EyeIcon />
+                }
+            </button>
         </div>
     )
 }
