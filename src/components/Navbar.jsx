@@ -1,11 +1,10 @@
 import {HeartIcon} from "@heroicons/react/24/outline"
-import { useState } from "react"
+
 function Navbar({children}) {
   return (
     <nav className='mb-5'>      
         <div className="bg-slate-700 flex justify-between p-3 rounded-lg relative">
             <div className="hidden md:block text-slate-300 font-bold">LOGO😍</div>
-            <Search/>
             {children}
             <Favorites/>
         </div> 
@@ -15,9 +14,12 @@ function Navbar({children}) {
 
 export default Navbar
 
-function Search(){
+export function Search({ query, setQuery }){
     return(
-            <input type="text" placeholder="Search..."
+            <input 
+            value={query}
+            onChange={(e)=> setQuery(e.target.value)}
+            type="text" placeholder="Search..."
             className="w-40 p-1 rounded-md bg-slate-500" />
     )
 }
