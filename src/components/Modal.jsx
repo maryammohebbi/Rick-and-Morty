@@ -12,7 +12,7 @@ function Modal({title, children, onOpen, open}) {
 
         <div className='absolute w-[90%] md:w-[60%] lg:w-[50%] min-h-[250px] bg-slate-900 z-20 left-[50%] -translate-x-[50%] rounded-lg p-3 shadow-2xl'>
             <div className='flex justify-between border-b-2 border-slate-500 pb-2 mb-2'>
-                <h2 className='text-slate-300 font-bold'>{title}</h2>
+                <h2 className='text-slate-300 font-bold text-lg'>{title}</h2>
                 <button
                 onClick={()=> onOpen(false)}
                  className='text-red-400'>
@@ -21,7 +21,6 @@ function Modal({title, children, onOpen, open}) {
             </div>
             {children}
         </div>
-
     </div>
   )
 }

@@ -4,13 +4,11 @@ import Modal from "./Modal"
 import { Character } from "./CharacterList"
 
 function Navbar({children}) {
-  return (
-        
+  return (      
         <nav className="bg-slate-700 flex justify-between p-3 rounded-lg mb-5">
             <div className="hidden md:block text-slate-300 font-bold">LOGO😍</div>
             {children}
-        </nav> 
-    
+        </nav>     
   )
 }
 
@@ -36,7 +34,7 @@ export function Favorites({favorites, onDeleteFavorite}){
     const [isOpen, setIsOpen] = useState(false)
     return(
         <>
-            <Modal onOpen={setIsOpen} open={isOpen} title="This is the modal title">
+            <Modal onOpen={setIsOpen} open={isOpen} title="Favorite characters">
                 {
                     favorites.map(item => (
                         <Character key={item.id} item={item}>

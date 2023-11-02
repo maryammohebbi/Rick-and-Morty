@@ -4,14 +4,13 @@ import CharacterList from './components/CharacterList'
 import CharacterDetail from './components/CharacterDetail'
 import toast, { Toaster } from 'react-hot-toast'
 import axios from 'axios'
-import Modal from './components/Modal'
 
 function App() {
   const [characters, setCharacters] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [query, setQuery] = useState("")
   const [selectedId, setSelectedId] = useState(null)
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState(()=> JSON.parse(localStorage.getItem("FAVORITES")) || [])
 
 
   useEffect(()=>{
@@ -46,6 +45,10 @@ function App() {
     }
   }, [query]);
 
+  useEffect(()=>{
+    localStorage.setItem("FAVORITES", JSON.stringify(favorites))
+  }, [favorites])
+
 const handleSelectedCharacter = (id)=> {
   setSelectedId(prevId => prevId === id ? null : id)
 }
@@ -64,9 +67,6 @@ const isAddedToFavorites = favorites.map(fav => fav.id ).includes(selectedId)
   return (
     <div className='container mx-auto max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-5xl p-5 relative'>
       <Toaster/>
-      {/* <Modal title="This is a test title for the favorites modal" open={true}>
-        THIS IS A MODAL !!
-      </Modal> */}
       <Navbar>
         <Search query={query} setQuery={setQuery}/>
         <SearchResult numOfSearchResult={characters.length}/>
