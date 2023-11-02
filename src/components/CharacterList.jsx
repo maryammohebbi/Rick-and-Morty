@@ -14,7 +14,15 @@ function CharacterList({characters, isLoading, onSelectCharacter, selectedId}) {
     <div className="w-full lg:w-[40%]">
         {
             characters.map(item => (
-                <Character key={item.id} item={item} onSelectCharacter={onSelectCharacter} selectedId={selectedId}/>
+                <Character 
+                    key={item.id} 
+                    item={item}>
+                    <button className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" onClick={()=> onSelectCharacter(item.id)}>
+                        {
+                            selectedId === item.id ? <EyeSlashIcon/> : <EyeIcon />
+                        }
+                    </button>
+                </Character>
             ))
         }
     </div>
@@ -23,7 +31,7 @@ function CharacterList({characters, isLoading, onSelectCharacter, selectedId}) {
 
 export default CharacterList
 
-function Character({item, onSelectCharacter, selectedId}){
+export function Character({item, children}){
     
     return(
         <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-4 hover:bg-slate-700">
@@ -40,11 +48,7 @@ function Character({item, onSelectCharacter, selectedId}){
                     <span> - {item.species}</span>
                 </div>
             </div>
-            <button className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" onClick={()=> onSelectCharacter(item.id)}>
-                {
-                    selectedId === item.id ? <EyeSlashIcon/> : <EyeIcon />
-                }
-            </button>
+            {children}
         </div>
     )
 }

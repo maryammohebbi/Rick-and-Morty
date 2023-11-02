@@ -60,13 +60,13 @@ const isAddedToFavorites = favorites.map(fav => fav.id ).includes(selectedId)
   return (
     <div className='container mx-auto max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-5xl p-5 relative'>
       <Toaster/>
-      <Modal title="This is a test title for the favorites modal" open={true}>
+      {/* <Modal title="This is a test title for the favorites modal" open={true}>
         THIS IS A MODAL !!
-      </Modal>
+      </Modal> */}
       <Navbar>
         <Search query={query} setQuery={setQuery}/>
         <SearchResult numOfSearchResult={characters.length}/>
-        <Favorites numOfFavorites={favorites.length}/>
+        <Favorites favorites={favorites}/>
       </Navbar>     
       <Main>
         <CharacterList characters={characters} isLoading={isLoading} onSelectCharacter={handleSelectedCharacter} selectedId={selectedId}/>

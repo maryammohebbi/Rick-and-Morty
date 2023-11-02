@@ -1,4 +1,7 @@
-import {HeartIcon} from "@heroicons/react/24/outline"
+import {HeartIcon, TrashIcon} from "@heroicons/react/24/outline"
+import { useState } from "react"
+import Modal from "./Modal"
+import { Character } from "./CharacterList"
 
 function Navbar({children}) {
   return (
@@ -29,14 +32,29 @@ export function SearchResult({numOfSearchResult}){
     )
 }
 
-export function Favorites({numOfFavorites}){
+export function Favorites({favorites}){
+    const [isOpen, setIsOpen] = useState(false)
     return(
-        <button className="relative w-8 h-8">
-            <HeartIcon className="w-full h-full text-red-600"/>
-            <span 
-            className="absolute w-5 h-5 bg-red-700 rounded-full -top-1 -right-2 text-xs text-slate-300 flex items-center justify-center font-bold">
-                {numOfFavorites}
-            </span>
-        </button>
+        <>
+            <Modal onOpen={setIsOpen} open={isOpen} title="This is the modal title">
+                {
+                    favorites.map(item => (
+                        <Character key={item.id} item={item}>
+                            <button>
+                                <TrashIcon className="w-6 h-6 text-red-400"/>
+                            </button>
+                        </Character> 
+                    ))}
+            </Modal>
+            <button 
+                onClick={()=> setIsOpen((is)=> !is)}
+                className="relative w-8 h-8">
+                    <HeartIcon className="w-full h-full text-red-600"/>
+                    <span 
+                    className="absolute w-5 h-5 bg-red-700 rounded-full -top-1 -right-2 text-xs text-slate-300 flex items-center justify-center font-bold">
+                        {favorites.length}
+                    </span>
+            </button>
+        </>
     )
 }
