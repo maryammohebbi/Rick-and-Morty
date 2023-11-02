@@ -42,7 +42,7 @@ function CharacterDetail({selectedId, onAddFavorite, isAddedToFavorites}) {
     if(!character || !selectedId) {
         return (
             <div className='w-full lg:w-[60%]'>
-                <p className="text-slate-300 font-bold text-lg">Please search and select a character</p>
+                <p className="text-slate-300 font-bold text-lg">Please select a character</p>
             </div>            
         )
     }
