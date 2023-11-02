@@ -4,20 +4,15 @@ import CharacterList from './components/CharacterList'
 import CharacterDetail from './components/CharacterDetail'
 import { Toaster } from 'react-hot-toast'
 import useCharacters from './hooks/useCharacters'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
 
   const [query, setQuery] = useState("")
   const {characters, isLoading} = useCharacters("https://rickandmortyapi.com/api/character/?name",query)
   const [selectedId, setSelectedId] = useState(null)
-  const [favorites, setFavorites] = useState(()=> JSON.parse(localStorage.getItem("FAVORITES")) || [])
-
-
-
-
-  useEffect(()=>{
-    localStorage.setItem("FAVORITES", JSON.stringify(favorites))
-  }, [favorites])
+  const [favorites, setFavorites]= useLocalStorage("FAVORITES", [])
+ 
 
 const handleSelectedCharacter = (id)=> {
   setSelectedId(prevId => prevId === id ? null : id)
