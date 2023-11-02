@@ -32,7 +32,7 @@ export function SearchResult({numOfSearchResult}){
     )
 }
 
-export function Favorites({favorites}){
+export function Favorites({favorites, onDeleteFavorite}){
     const [isOpen, setIsOpen] = useState(false)
     return(
         <>
@@ -41,7 +41,9 @@ export function Favorites({favorites}){
                     favorites.map(item => (
                         <Character key={item.id} item={item}>
                             <button>
-                                <TrashIcon className="w-6 h-6 text-red-400"/>
+                                <TrashIcon 
+                                onClick={()=> onDeleteFavorite(item.id)}
+                                className="w-6 h-6 text-red-400"/>
                             </button>
                         </Character> 
                     ))}

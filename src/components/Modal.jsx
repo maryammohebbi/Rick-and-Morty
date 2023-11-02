@@ -7,11 +7,11 @@ function Modal({title, children, onOpen, open}) {
     <div className=''>
         <div 
         onClick={()=> onOpen(false)}
-        className='bg-slate-900 fixed top-0 left-0 right-0 h-full opacity-80 z-10'>
+        className='bg-slate-900 fixed top-0 left-0 right-0 h-full opacity-90 z-10'>
         </div>
 
-        <div className='absolute w-[40%] min-h-[250px] bg-slate-800 z-20 left-[50%] -translate-x-[50%] rounded-lg p-3 shadow-2xl'>
-            <div className='flex justify-between border-b-2 border-slate-500 pb-2'>
+        <div className='absolute w-[90%] md:w-[60%] lg:w-[50%] min-h-[250px] bg-slate-900 z-20 left-[50%] -translate-x-[50%] rounded-lg p-3 shadow-2xl'>
+            <div className='flex justify-between border-b-2 border-slate-500 pb-2 mb-2'>
                 <h2 className='text-slate-300 font-bold'>{title}</h2>
                 <button
                 onClick={()=> onOpen(false)}

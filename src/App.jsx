@@ -54,6 +54,10 @@ const handleAddFavorite = (char)=> {
   setFavorites((prevFave)=> [...prevFave, char])
 }
 
+const handleDeleteFavorites = (id)=> {
+  setFavorites((prevFav)=> prevFav.filter(fav=> fav.id !== id))
+}
+
 const isAddedToFavorites = favorites.map(fav => fav.id ).includes(selectedId)
 
 
@@ -66,7 +70,7 @@ const isAddedToFavorites = favorites.map(fav => fav.id ).includes(selectedId)
       <Navbar>
         <Search query={query} setQuery={setQuery}/>
         <SearchResult numOfSearchResult={characters.length}/>
-        <Favorites favorites={favorites}/>
+        <Favorites favorites={favorites} onDeleteFavorite={handleDeleteFavorites}/>
       </Navbar>     
       <Main>
         <CharacterList characters={characters} isLoading={isLoading} onSelectCharacter={handleSelectedCharacter} selectedId={selectedId}/>
