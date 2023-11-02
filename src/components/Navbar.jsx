@@ -2,12 +2,12 @@ import {HeartIcon} from "@heroicons/react/24/outline"
 
 function Navbar({children}) {
   return (
-    <nav className='mb-5'>      
-        <div className="bg-slate-700 flex justify-between p-3 rounded-lg relative">
+        
+        <nav className="bg-slate-700 flex justify-between p-3 rounded-lg mb-5">
             <div className="hidden md:block text-slate-300 font-bold">LOGO😍</div>
             {children}
-        </div> 
-    </nav>
+        </nav> 
+    
   )
 }
 
