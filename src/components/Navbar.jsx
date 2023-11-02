@@ -6,7 +6,6 @@ function Navbar({children}) {
         <div className="bg-slate-700 flex justify-between p-3 rounded-lg relative">
             <div className="hidden md:block text-slate-300 font-bold">LOGO😍</div>
             {children}
-            <Favorites/>
         </div> 
     </nav>
   )
@@ -30,13 +29,13 @@ export function SearchResult({numOfSearchResult}){
     )
 }
 
-function Favorites(){
+export function Favorites({numOfFavorites}){
     return(
         <button className="relative w-8 h-8">
             <HeartIcon className="w-full h-full text-red-600"/>
             <span 
             className="absolute w-5 h-5 bg-red-700 rounded-full -top-1 -right-2 text-xs text-slate-300 flex items-center justify-center font-bold">
-                3
+                {numOfFavorites}
             </span>
         </button>
     )

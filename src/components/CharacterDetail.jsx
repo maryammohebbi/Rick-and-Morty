@@ -4,7 +4,7 @@ import axios from "axios"
 import Loader from "./Loader"
 import toast from "react-hot-toast"
 
-function CharacterDetail({selectedId}) {
+function CharacterDetail({selectedId, onAddFavorite, isAddedToFavorites}) {
     const [character, setCharacter] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [episodes, setEpisodes] = useState([])
@@ -50,7 +50,7 @@ function CharacterDetail({selectedId}) {
 
   return (
     <div className='w-full lg:w-[60%]'>
-        <CharacterSubInfo character={character}/>
+        <CharacterSubInfo character={character} onAddFavorite={onAddFavorite} isAddedToFavorites={isAddedToFavorites}/>
         <EpisodeList episodes={episodes}/>
     </div>
   )
@@ -58,7 +58,7 @@ function CharacterDetail({selectedId}) {
 
 export default CharacterDetail
 
-function CharacterSubInfo({character}){
+function CharacterSubInfo({character, onAddFavorite, isAddedToFavorites}){
     return(
         <div className="bg-slate-800 flex rounded-lg gap-x-2 p-1 mb-8">
             <img src={character.image} alt={character.name} 
@@ -77,7 +77,17 @@ function CharacterSubInfo({character}){
                     <p className="text-sm text-slate-400">Last known location:</p>
                     <p className="text-sm font-bold text-slate-300">{character.location.name}</p>
                 </div>
-                <button className="w-auto h-10 p-2 bg-slate-400 rounded-lg text-sm md:text-base">Add To Favorites</button>
+                {
+                    isAddedToFavorites ? (<p className="text-slate-400 font-bold">Already added to your favorites!✔ </p>)
+                    :
+                    (
+                        <button 
+                            onClick={()=> onAddFavorite(character)}
+                            className="w-auto h-10 p-2 bg-slate-400 rounded-lg text-sm md:text-base">
+                                Add To Favorites
+                        </button>
+                    )
+                }
             </div>
         </div>
     )
