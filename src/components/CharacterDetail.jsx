@@ -94,17 +94,26 @@ function CharacterSubInfo({character, onAddFavorite, isAddedToFavorites}){
 }
 
 function EpisodeList({episodes}){
+    const [sortBy, setSortBy] = useState(true)
+    let sortedEpisodes;
+
+    if(sortBy){
+        sortedEpisodes = [...episodes].sort((a,b)=> new Date(a.created) - new Date(b.created))
+    }else{
+        sortedEpisodes = [...episodes].sort((a,b)=> new Date(b.created) - new Date(a.created))
+    }
+    
     return(
         <div className="bg-slate-800 rounded-lg p-2">
             <div className="flex justify-between mb-3">
                 <h2 className="text-slate-300 font-bold text-lg">List Of Episodes</h2>
-                <button className="w-6 h-6 text-slate-300">
-                   <ArrowDownCircleIcon/> 
+                <button className="w-6 h-6 text-slate-300" onClick={()=> setSortBy((is)=> !is)}>
+                   <ArrowDownCircleIcon style={{rotate: sortBy ? "0deg" : "180deg"}} className="transition-all duration-500"/> 
                 </button>
             </div>
             <ul>
                 {
-                    episodes.map((item, index) => (
+                    sortedEpisodes.map((item, index) => (
                         <li key={item.id} className="flex justify-between text-slate-400 mb-2">
                             <div>{String(index + 1).padStart(2, "0")} - {item.episode}: <strong>{item.name}</strong></div>
                             <div className="bg-slate-500 text-slate-200 rounded-2xl text-xs p-1">{item.air_date}</div>

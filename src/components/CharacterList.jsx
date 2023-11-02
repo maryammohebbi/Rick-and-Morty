@@ -26,7 +26,7 @@ export default CharacterList
 function Character({item, onSelectCharacter, selectedId}){
     
     return(
-        <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-4">
+        <div className="w-full bg-slate-800 rounded-xl flex justify-between items-center p-2 mb-4 hover:bg-slate-700">
             <img src={item.image} alt={item.name}
             className="w-20 h-20 rounded-xl" />
             <div>
